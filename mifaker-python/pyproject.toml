@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "mifaker"
+version = "0.1.0"
+description = ""
+authors = ["joonhwan <joonhwan.lee@gmail.com>"]
+
+[tool.poetry.scripts]
+main = "run:main"
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.12"
+fastapi = "^0.79.0"
+uvicorn = {extras = ["standard"], version = "^0.18.2"}
+bokeh = "^2.4.3"
+numpy = "^1.23.1"
+matplotlib = "^3.5.2"
+scipy = "^1.9.0"
+scikit-learn = "^1.1.1"
+
+[tool.poetry.dev-dependencies]
+autopep8 = "^1.6.0"
+ipykernel = "^6.15.1"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
