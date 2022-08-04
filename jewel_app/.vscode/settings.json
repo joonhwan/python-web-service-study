@@ -1,0 +1,16 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "database.db",
+            "database": "${workspaceFolder:jewel_app}/database.db"
+        },
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "gem-db",
+            "database": "${workspaceFolder:jewel_app}/gem.db"
+        }
+    ]
+}
