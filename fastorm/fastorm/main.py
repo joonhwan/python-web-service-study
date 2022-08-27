@@ -1,8 +1,8 @@
 from loguru import logger
 from fastapi import FastAPI, Depends
-# from fasthtmx.db import init_db, get_session,
-from fasthtmx.db import  init_db_async, get_session_async
-from fasthtmx.schema.song import *
+# from fastorm.db import init_db, get_session,
+from fastorm.db import  init_db_async, get_session_async
+from fastorm.schema.song import *
 from sqlmodel import select, Session
 app = FastAPI()
 

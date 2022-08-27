@@ -1,0 +1,2 @@
+CREATE DATABASE hero;
+CREATE DATABASE fastorm;

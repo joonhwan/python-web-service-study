@@ -1,7 +1,7 @@
 from loguru import logger
 # 순서가 중요하다 😳
-from fasthtmx.schema import Hero
-from fasthtmx.db import init_db, new_session
+from fastorm.schema import Hero
+from fastorm.db import init_db, new_session
 from sqlmodel import select
 
 def add_heroes():

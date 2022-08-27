@@ -4,7 +4,7 @@ from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
 from sqlalchemy.orm import sessionmaker
 
 DB_URL = os.environ.get("DB_URL") 
-# DB_URL = DB_URL or "postgresql+psycopg2://postgres:postgres@localhost:15432/fasthtmx"
+# DB_URL = DB_URL or "postgresql+psycopg2://postgres:postgres@localhost:15432/fastorm"
 
 # engine = create_engine(DB_URL, echo=True)
 
@@ -21,7 +21,7 @@ DB_URL = os.environ.get("DB_URL")
 #     with Session(engine) as session:
 #         yield session
 
-DB_URL = DB_URL or "postgresql+asyncpg://postgres:postgres@localhost:15432/fasthtmx"
+DB_URL = DB_URL or "postgresql+asyncpg://postgres:postgres@localhost:15432/fastorm"
 engine = create_async_engine(DB_URL, echo=True)
 
 async def init_db_async():
