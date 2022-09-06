@@ -1,0 +1,78 @@
+# Save the output of this file and use kubectl create -f to import
+# it into Kubernetes.
+#
+# Created with podman-4.2.0
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    io.kubernetes.cri-o.ContainerType/db: container
+    io.kubernetes.cri-o.ContainerType/pgadmin: container
+    io.kubernetes.cri-o.SandboxID/db: 65be4feaeb90c429f00815a23c4662b04afed160789c927852ce0896d9124e4
+    io.kubernetes.cri-o.SandboxID/pgadmin: 65be4feaeb90c429f00815a23c4662b04afed160789c927852ce0896d9124e4
+    io.kubernetes.cri-o.TTY/db: "false"
+    io.kubernetes.cri-o.TTY/pgadmin: "false"
+    io.podman.annotations.autoremove/db: "FALSE"
+    io.podman.annotations.autoremove/pgadmin: "FALSE"
+    io.podman.annotations.init/db: "FALSE"
+    io.podman.annotations.init/pgadmin: "FALSE"
+    io.podman.annotations.privileged/db: "FALSE"
+    io.podman.annotations.privileged/pgadmin: "FALSE"
+    io.podman.annotations.publish-all/db: "FALSE"
+    io.podman.annotations.publish-all/pgadmin: "FALSE"
+  creationTimestamp: "2022-09-05T11:50:38Z"
+  labels:
+    app: pg-pod
+  name: pg-pod
+spec:
+  containers:
+  - args:
+    - postgres
+    env:
+    - name: POSTGRES_USER
+      value: postgres
+    image: docker.io/library/postgres:14.5
+    name: db
+    ports:
+    - containerPort: 5432
+      hostPort: 5432
+    - containerPort: 8080
+      hostPort: 39857
+    resources: {}
+    securityContext:
+      capabilities:
+        drop:
+        - CAP_MKNOD
+        - CAP_NET_RAW
+        - CAP_AUDIT_WRITE
+    volumeMounts:
+    - mountPath: /var/lib/postgresql/data
+      name: 43261a375cfb69ae05fa3bcd880978d24c007f2886e3c6c78b43acf40c185951-pvc
+  - env:
+    - name: PGADMIN_DEFAULT_PASSWORD
+      value: pass
+    - name: PGADMIN_DEFAULT_EMAIL
+      value: joonhwan.lee@gmail.com
+    image: docker.io/dpage/pgadmin4:latest
+    name: pgadmin
+    resources: {}
+    securityContext:
+      capabilities:
+        drop:
+        - CAP_MKNOD
+        - CAP_NET_RAW
+        - CAP_AUDIT_WRITE
+    volumeMounts:
+    - mountPath: /var/lib/pgadmin
+      name: c02b81ee53c8781c5239a9e46b151d8b84fbe58aeaa76863bba2826542a64831-pvc
+  hostname: pg-pod
+  restartPolicy: Never
+  volumes:
+  - name: 43261a375cfb69ae05fa3bcd880978d24c007f2886e3c6c78b43acf40c185951-pvc
+    persistentVolumeClaim:
+      claimName: 43261a375cfb69ae05fa3bcd880978d24c007f2886e3c6c78b43acf40c185951
+  - name: c02b81ee53c8781c5239a9e46b151d8b84fbe58aeaa76863bba2826542a64831-pvc
+    persistentVolumeClaim:
+      claimName: c02b81ee53c8781c5239a9e46b151d8b84fbe58aeaa76863bba2826542a64831
+status: {}
+
